@@ -159,12 +159,16 @@ int main(int argc, char** argv)
 	
 	n = atoll(argv[1]);
 	m = atoll(argv[2]);
-	//FILE *fp = fopen(argv[1], "w"); 
-FILE* fp = fopen(argv[3],"w");
-if(fp == NULL){
-   perror("fopen");
-   exit(EXIT_FAILURE);
-}
+
+	 FILE *fptr;
+	 fptr = fopen(argv[3],"w");
+	if(fptr == NULL)
+	{
+	  printf("Error!");   
+	  exit(1);             
+	}
+	
+ 
 	
 	slice = n / m;
 	printf("The size of array is: %d\n",n);
@@ -225,12 +229,15 @@ if(fp == NULL){
 	*/
 	/* Final Sorted Array */
 	printf("Final Sorted Array \n");
+	int temp;
 	for(i = 0; i < n; i++){
+		temp  = array[i];
 		printf("%d ",array[i]);
-		printf(fp, "%d\n", array[i]);
+		fprintf(fptr,"%d\n",temp);
 	}
 	printf("\n");
-	
+
+   fclose(fptr);
 
 
 	return 0; 
